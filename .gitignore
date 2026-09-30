@@ -1,0 +1,45 @@
+# 依存関係
+node_modules
+
+# ビルド成果物
+dist
+dist-ssr
+
+# テスト
+coverage
+
+# 環境変数（秘密情報を含むため Git に含めない。サンプルの .env.example のみ含める）
+.env
+.env.*
+!.env.example
+*.local
+
+# Vercel
+.vercel
+
+# Claude Code（個人設定）
+.claude/settings.local.json
+
+# 退役した学習時間ダッシュボード（手元のバックアップとしてのみ残す）
+study_dashboard.html
+
+# ログ
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# エディタ・OS
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
