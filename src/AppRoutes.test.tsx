@@ -91,19 +91,19 @@ describe('ルーティング（SPEC 5.1）', () => {
     it('`/summary/day/2026-10-14` の日ビューに対象日「2026-10-14」が表示される', () => {
       renderAt('/summary/day/2026-10-14')
       expect(screen.getByRole('heading', { name: '集計タブ：日' })).toBeInTheDocument()
-      expect(screen.getByText(/2026-10-14/)).toBeInTheDocument()
+      expect(within(screen.getByRole('main')).getByText(/2026-10-14/)).toBeInTheDocument()
     })
     // SPEC 5.1 `/summary/day/:date/edit`、5.7「対象日の記録を…」
     it('`/summary/day/2026-10-14/edit` のタイムライン編集に対象日「2026-10-14」が表示される', () => {
       renderAt('/summary/day/2026-10-14/edit')
       expect(screen.getByRole('heading', { name: 'タイムライン編集' })).toBeInTheDocument()
-      expect(screen.getByText(/2026-10-14/)).toBeInTheDocument()
+      expect(within(screen.getByRole('main')).getByText(/2026-10-14/)).toBeInTheDocument()
     })
     // SPEC 5.1「`:monday` は週の月曜日の日付」
     it('`/summary/week/2026-10-12` の週ビューに週の月曜日「2026-10-12」が表示される', () => {
       renderAt('/summary/week/2026-10-12')
       expect(screen.getByRole('heading', { name: '集計タブ：週' })).toBeInTheDocument()
-      expect(screen.getByText(/2026-10-12/)).toBeInTheDocument()
+      expect(within(screen.getByRole('main')).getByText(/2026-10-12/)).toBeInTheDocument()
     })
   })
 
@@ -184,7 +184,7 @@ describe('下部タブ（SPEC 5.1「下部タブは『記録』『集計』の2�
       await user.click(getTabs().summary)
       expect(currentPath()).toBe('/summary/day/2026-10-18')
       expect(screen.getByRole('heading', { name: '集計タブ：日' })).toBeInTheDocument()
-      expect(screen.getByText(/2026-10-18/)).toBeInTheDocument()
+      expect(within(screen.getByRole('main')).getByText(/2026-10-18/)).toBeInTheDocument()
     })
     // SPEC 5.1 `/`
     it('`/summary/day/2026-10-14` で「記録」タブをタップすると、`/` の「記録タブ」が表示される', async () => {
