@@ -148,7 +148,13 @@ describe('下部タブ（SPEC 5.1「下部タブは『記録』『集計』の2�
     })
     // SPEC 5.1（`/setup`「合言葉入力」は記録・集計どちらのタブにも属さない）、5.8（API が 401 のときに移動する画面）。
     // 表示しないことは SPEC に記載なし。T02 のケース承認で決定：`/setup` では下部タブを表示しない。
-    it.todo('`/setup` では下部タブ（navigation）が表示されず、「記録」「集計」タブのリンクもない')
+    it('`/setup` では下部タブ（navigation）が表示されず、「記録」「集計」タブのリンクもない', () => {
+      renderAt('/setup')
+      expect(screen.getByRole('heading', { name: '合言葉入力' })).toBeInTheDocument()
+      expect(screen.queryByRole('navigation')).toBeNull()
+      expect(screen.queryByRole('link', { name: '記録' })).toBeNull()
+      expect(screen.queryByRole('link', { name: '集計' })).toBeNull()
+    })
   })
 
   describe('現在のタブが分かる', () => {
