@@ -37,7 +37,7 @@
   - 完了条件：4つの npm scripts が通る。
   - 対象：`package.json`、各種設定ファイル
 
-- [ ] **T01b 開発フローの整備**
+- [x] **T01b 開発フローの整備**
   - フロー：対象外
   - 内容：test-writer・implementer・reviewer のエージェント定義（`.claude/agents/`）を作成する。implementer が保護対象（`**/*.test.ts(x)`、`vitest.config.ts`、テストのセットアップファイル）を編集できないようにするフックを設定する。`reports/` ディレクトリを用意する。
   - 完了条件：人間が確認：implementer として保護対象のファイルを編集しようとするとブロックされる。
