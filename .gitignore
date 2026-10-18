@@ -23,6 +23,10 @@ coverage
 # 退役した学習時間ダッシュボード（手元のバックアップとしてのみ残す）
 study_dashboard.html
 
+# エージェントからの報告（作業中の一時的なもの。説明の README.md のみ含める）
+reports/*
+!reports/README.md
+
 # ログ
 logs
 *.log
