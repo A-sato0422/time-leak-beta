@@ -31,7 +31,7 @@
 
 ## 1日目：基盤
 
-- [ ] **T01 プロジェクト作成とテスト環境**
+- [x] **T01 プロジェクト作成とテスト環境**
   - フロー：対象外
   - 内容：Vite + React + TypeScript でプロジェクトを作成する。ESLint、Prettier、Vitest を導入し、npm scripts（`typecheck` `lint` `test` `build`）を用意する。サンプルのテストを1本置く。
   - 完了条件：4つの npm scripts が通る。

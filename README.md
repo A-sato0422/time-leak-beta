@@ -57,3 +57,9 @@ vercel dev
 | `npm run build` | 本番ビルド |
 
 4つすべてが通ることを、全タスク共通の完了条件とする。
+
+| コマンド | 内容 |
+|---|---|
+| `npm run test:watch` | Vitest（ウォッチモード） |
+| `npm run format` | Prettier で整形 |
+| `npm run format:check` | 整形漏れの確認 |

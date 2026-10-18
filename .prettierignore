@@ -1,0 +1,5 @@
+dist
+coverage
+package-lock.json
+# 仕様書などのドキュメントは手で整形する
+*.md
