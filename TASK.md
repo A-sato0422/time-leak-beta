@@ -49,7 +49,7 @@
   - 完了条件：各パスで対応するプレースホルダーが表示されること、タブで記録と集計を行き来できることを RTL でテストし、通る。
   - 対象：`src/main.tsx`、`src/App.tsx`、`src/pages/`、`src/components/`
 
-- [ ] **T03 GitHub・Vercel 連携と疎通確認**
+- [x] **T03 GitHub・Vercel 連携と疎通確認**
   - フロー：対象外
   - 内容：GitHub の非公開リポジトリを作成し、Vercel と連携する。`api/health.ts`（`{ ok: true }` を返す）を作成する。`vercel dev` でローカル起動できるようにする。
   - 完了条件：`api/health` のハンドラーのテストが通る。人間が確認：本番URLで `/api/health` が応答する、`vercel dev` で起動できる。
