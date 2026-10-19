@@ -1,0 +1,2 @@
+# api/ のテストファイルが Vercel Functions としてデプロイされないようにする
+api/**/*.test.ts
