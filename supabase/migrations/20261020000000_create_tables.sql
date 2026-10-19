@@ -65,3 +65,8 @@ create trigger time_entries_set_updated_at
 alter table public.categories enable row level security;
 alter table public.study_topics enable row level security;
 alter table public.time_entries enable row level security;
+
+-- 「新しいテーブルを Data API に自動で公開する」設定をオフにしているため、
+-- Vercel Functions が使う service_role にだけ明示的に権限を与える（anon・authenticated には与えない）
+grant select, insert, update, delete on public.categories, public.study_topics, public.time_entries
+  to service_role;

@@ -132,7 +132,7 @@ select pg_temp.expect_ok(
   $sql$
 );
 
--- 6. 初期データ・RLS・部分ユニークインデックス
+-- 6. 初期データ・RLS・部分ユニークインデックス・service_role の権限
 do $$
 begin
   if (
@@ -176,7 +176,15 @@ begin
   ) then
     raise exception 'NG: 進行中は1件のみの部分ユニークインデックスがない';
   end if;
-  raise notice 'OK: 初期データ・RLS・部分ユニークインデックス';
+  if exists (
+    select 1
+    from unnest(array['public.categories', 'public.study_topics', 'public.time_entries']) as t (name),
+      unnest(array['SELECT', 'INSERT', 'UPDATE', 'DELETE']) as p (privilege)
+    where not has_table_privilege('service_role', t.name, p.privilege)
+  ) then
+    raise exception 'NG: service_role に必要なテーブル権限がない';
+  end if;
+  raise notice 'OK: 初期データ・RLS・部分ユニークインデックス・service_role の権限';
 end;
 $$;
 
