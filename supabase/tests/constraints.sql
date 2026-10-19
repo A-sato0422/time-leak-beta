@@ -2,8 +2,8 @@
 -- マイグレーション適用後のDBで実行する。期待どおりでない場合は例外で止まる。
 -- すべてのデータ変更は最後に ROLLBACK するため、DBには何も残らない。
 --
--- 実行方法の例：
---   psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f supabase/tests/constraints.sql
+-- 実行方法の例（リンク済みのプロジェクトに対して実行する。db query は Supabase CLI v2.121 以降）：
+--   npx supabase@2.121.0 db query --linked -f supabase/tests/constraints.sql
 --   （または Supabase の SQL Editor に貼り付けて実行する）
 
 begin;
