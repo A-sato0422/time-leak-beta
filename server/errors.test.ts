@@ -6,7 +6,7 @@ import { errorResponse } from './errors'
 // 対象：server/errors.ts の errorResponse
 // TASK.md T05 完了条件「エラーレスポンス生成の単体テストが通る」
 describe('errorResponse', () => {
-  // SPEC 8.1 のステータス表（400 / 401 / 404 / 409）
+  // SPEC 8.1 のステータス表（400 / 401 / 404 / 409 / 500）
   describe('ステータス', () => {
     it('400 を指定するとステータス 400 のレスポンスを返す（入力値の不正）', () => {
       const res = errorResponse(400, { code: 'VALIDATION_ERROR', message: 'invalid' })
@@ -24,6 +24,7 @@ describe('errorResponse', () => {
       const res = errorResponse(409, { code: 'OVERLAP', message: 'overlap', conflicts: [] })
       expect(res.status).toBe(409)
     })
+    it.todo('500 を指定するとステータス 500 のレスポンスを返す（サーバー側の想定外のエラー）')
   })
 
   // SPEC 8.1「リクエスト・レスポンスは JSON」

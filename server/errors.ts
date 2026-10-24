@@ -3,7 +3,7 @@
  */
 
 /** SPEC 8.1 で定めたエラーのステータス */
-export type ErrorStatus = 400 | 401 | 404 | 409
+export type ErrorStatus = 400 | 401 | 404 | 409 | 500
 
 /**
  * エラーレスポンスの `error` の中身（SPEC 8.1）。
