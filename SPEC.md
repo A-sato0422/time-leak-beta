@@ -277,6 +277,7 @@ time_entries
 | `401` | 合言葉が不正または未指定 |
 | `404` | 対象が存在しない |
 | `409` | 進行中の記録がすでにある／時間が重なる（重なっている記録をレスポンスに含める） |
+| `500` | サーバー側の想定外のエラー（環境変数の設定漏れ、DB の障害など）。`code` は `INTERNAL_ERROR` とし、`message` に内部の詳細（例外の内容、環境変数名など）を含めない |
 
 エラーレスポンスの形式：
 
@@ -342,8 +343,8 @@ time_entries
 
 | 変数 | 用途 | 置き場所 |
 |---|---|---|
-| `SUPABASE_URL` | Supabase の接続先 | Vercel の環境変数、`.env.local` |
-| `SUPABASE_SERVICE_ROLE_KEY` | サーバー側で使う Supabase のキー | 同上 |
+| `SUPABASE_URL` | Supabase の接続先（Project URL：`https://<project-ref>.supabase.co`） | Vercel の環境変数、`.env.local` |
+| `SUPABASE_SECRET_KEY` | サーバー側で使う Supabase の Secret key（`sb_secret_...`。RLS を通らずに読み書きできる） | 同上 |
 | `APP_SECRET` | 合言葉 | 同上 |
 
 - いずれもサーバー側だけで使う。フロントに露出させないため、`VITE_` 接頭辞は付けない。

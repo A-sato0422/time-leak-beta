@@ -31,8 +31,8 @@ npm install
 
 | 変数 | 用途 |
 |---|---|
-| `SUPABASE_URL` | Supabase の接続先 |
-| `SUPABASE_SERVICE_ROLE_KEY` | サーバー側で使う Supabase のキー |
+| `SUPABASE_URL` | Supabase の接続先（Project URL） |
+| `SUPABASE_SECRET_KEY` | サーバー側で使う Supabase の Secret key（`sb_secret_...`） |
 | `APP_SECRET` | アプリの合言葉 |
 
 いずれもサーバー側（`api/`）だけで使うため、`VITE_` 接頭辞は付けない。
