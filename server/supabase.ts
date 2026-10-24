@@ -1,7 +1,7 @@
 /**
  * サーバー側で使う Supabase クライアントの生成（SPEC 9.2）。
  */
-import type { SupabaseClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 
 /** Supabase クライアントの生成で参照する環境変数 */
 export type SupabaseEnv = {
@@ -19,6 +19,16 @@ export type SupabaseEnv = {
  * @param env 環境変数。省略時は `process.env`（テストでは値を直接渡す）
  */
 export function createSupabaseClient(env: SupabaseEnv = process.env): SupabaseClient {
-  void env
-  throw new Error('not implemented')
+  const url = env.SUPABASE_URL
+  const key = env.SUPABASE_SECRET_KEY
+  if (!url) {
+    throw new Error('環境変数 SUPABASE_URL が設定されていません')
+  }
+  if (!key) {
+    throw new Error('環境変数 SUPABASE_SECRET_KEY が設定されていません')
+  }
+  // サーバー側ではセッションを持たない（リクエストごとに使い捨てる）
+  return createClient(url, key, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  })
 }

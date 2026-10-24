@@ -24,7 +24,13 @@ export function errorResponse<TConflict>(
   status: ErrorStatus,
   error: ApiError<TConflict>,
 ): Response {
-  void status
-  void error
-  throw new Error('not implemented')
+  // 渡された値に余分なキーがあっても本文に出さないよう、必要なキーだけを詰め直す
+  const body: ApiError<TConflict> = { code: error.code, message: error.message }
+  if (error.conflicts !== undefined) {
+    body.conflicts = error.conflicts
+  }
+  return new Response(JSON.stringify({ error: body }), {
+    status,
+    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+  })
 }
