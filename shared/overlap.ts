@@ -47,7 +47,10 @@ export function findOverlaps<T extends OverlapCandidate>(
   })
 }
 
-/** ISO 8601 の日時文字列を、瞬間（エポックからのミリ秒）にする */
+/**
+ * ISO 8601 の日時文字列を、瞬間（エポックからのミリ秒）にする。
+ * timestamptz のマイクロ秒は切り捨てるため、1ms 未満の差の判定は DB の排他制約に任せる。
+ */
 function toInstant(value: string): number {
   return Date.parse(value)
 }
