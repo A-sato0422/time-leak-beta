@@ -36,7 +36,23 @@ export function findOverlaps<T extends OverlapCandidate>(
   target: OverlapTarget,
   entries: readonly T[],
 ): T[] {
-  void target
-  void entries
-  throw new Error('not implemented')
+  const targetStart = toInstant(target.started_at)
+  const targetEnd = toEndInstant(target.ended_at)
+  return entries.filter((entry) => {
+    if (target.id !== undefined && entry.id === target.id) return false
+    const entryStart = toInstant(entry.started_at)
+    const entryEnd = toEndInstant(entry.ended_at)
+    // 半開区間 [start, end) 同士が重なる条件：互いの開始が相手の終了より前
+    return entryStart < targetEnd && targetStart < entryEnd
+  })
+}
+
+/** ISO 8601 の日時文字列を、瞬間（エポックからのミリ秒）にする */
+function toInstant(value: string): number {
+  return Date.parse(value)
+}
+
+/** 終了日時を瞬間にする。null（進行中）は無限大とみなす（SPEC 7.2 の coalesce(ended_at, 'infinity')） */
+function toEndInstant(value: string | null): number {
+  return value === null ? Number.POSITIVE_INFINITY : toInstant(value)
 }
