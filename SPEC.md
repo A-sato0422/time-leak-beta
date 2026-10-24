@@ -342,8 +342,8 @@ time_entries
 
 | 変数 | 用途 | 置き場所 |
 |---|---|---|
-| `SUPABASE_URL` | Supabase の接続先 | Vercel の環境変数、`.env.local` |
-| `SUPABASE_SERVICE_ROLE_KEY` | サーバー側で使う Supabase のキー | 同上 |
+| `SUPABASE_URL` | Supabase の接続先（Project URL：`https://<project-ref>.supabase.co`） | Vercel の環境変数、`.env.local` |
+| `SUPABASE_SECRET_KEY` | サーバー側で使う Supabase の Secret key（`sb_secret_...`。RLS を通らずに読み書きできる） | 同上 |
 | `APP_SECRET` | 合言葉 | 同上 |
 
 - いずれもサーバー側だけで使う。フロントに露出させないため、`VITE_` 接頭辞は付けない。
