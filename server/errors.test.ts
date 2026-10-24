@@ -24,7 +24,10 @@ describe('errorResponse', () => {
       const res = errorResponse(409, { code: 'OVERLAP', message: 'overlap', conflicts: [] })
       expect(res.status).toBe(409)
     })
-    it.todo('500 を指定するとステータス 500 のレスポンスを返す（サーバー側の想定外のエラー）')
+    it('500 を指定するとステータス 500 のレスポンスを返す（サーバー側の想定外のエラー）', () => {
+      const res = errorResponse(500, { code: 'INTERNAL_ERROR', message: 'internal error' })
+      expect(res.status).toBe(500)
+    })
   })
 
   // SPEC 8.1「リクエスト・レスポンスは JSON」
