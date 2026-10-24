@@ -2,7 +2,7 @@
  * 合言葉（`x-app-secret` ヘッダー）の検証（SPEC 8.1）。
  */
 import { createHash, timingSafeEqual } from 'node:crypto'
-import { errorResponse } from './errors'
+import { errorResponse } from './errors.js'
 
 /** 合言葉の検証で参照する環境変数 */
 export type AppSecretEnv = {
